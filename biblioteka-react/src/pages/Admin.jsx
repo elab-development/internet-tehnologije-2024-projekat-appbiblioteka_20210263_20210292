@@ -134,15 +134,7 @@ const Admin = () => {
                             ['Available Book Copies', bookCopies.length],
                         ]}
                         options={{
-                            title: 'Library Overview',
-                            chartArea: {width: '50%'},
-                            hAxis: {
-                                title: 'Total Count',
-                                minValue: 0,
-                            },
-                            vAxis: {
-                                title: 'Entity',
-                            },
+                            title: 'Library Overview'
                         }}
                     />
                 </Col>
