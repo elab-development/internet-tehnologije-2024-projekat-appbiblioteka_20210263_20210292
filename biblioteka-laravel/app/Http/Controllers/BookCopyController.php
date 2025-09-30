@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -80,5 +81,23 @@ class BookCopyController extends ResponseController
             new \App\Http\Resources\BookCopyResource($bookCopy),
             'Book copy status updated successfully'
         );
+    }
+    public function availableBookCopies(Request $request)
+    {
+        $bookCopies = \App\Models\BookCopy::where('status', 'available')->get();
+        return $this->success(
+            \App\Http\Resources\BookCopyResource::collection($bookCopies->load('book')),
+            'Available book copies retrieved successfully'
+        );
+    }
+
+    public function bookCopyPerStatus(Request $request)
+    {
+        $data = DB::table('book_copies')
+            ->select('status', DB::raw('count(*) as total'))
+            ->groupBy('status')
+            ->get();
+
+        return $this->success($data, 'Book copies per status retrieved successfully');
     }
 }

@@ -40,6 +40,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/book-copies/{id}', [\App\Http\Controllers\BookCopyController::class, 'destroy'])->middleware('role:admin');;
     Route::patch('/book-copies/{id}/status', [\App\Http\Controllers\BookCopyController::class, 'changeStatus'])->middleware('role:admin');;
 
+    Route::get('/available-book-copies', [\App\Http\Controllers\BookCopyController::class, 'availableBookCopies']);
+    Route::get('/book-copies-per-status', [\App\Http\Controllers\BookCopyController::class, 'bookCopyPerStatus']);
+
     Route::post('/books', [\App\Http\Controllers\BookController::class, 'store'])->middleware('role:admin');;
     Route::delete('/books/{id}', [\App\Http\Controllers\BookController::class, 'destroy'])->middleware('role:admin');;
 

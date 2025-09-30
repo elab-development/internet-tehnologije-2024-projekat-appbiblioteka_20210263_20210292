@@ -47,6 +47,9 @@ class LendController extends ResponseController
         }
 
         $lend = \App\Models\Lend::create($request->all());
+        $bookCopy = \App\Models\BookCopy::find($request->book_copy_id);
+        $bookCopy->status = \App\Models\BookCopy::STATUS_BORROWED;
+        $bookCopy->save();
         return $this->success(
             new \App\Http\Resources\LendResource($lend),
             'Lend created successfully',
