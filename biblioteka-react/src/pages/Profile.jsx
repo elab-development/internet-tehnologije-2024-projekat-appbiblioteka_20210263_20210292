@@ -9,6 +9,11 @@ const Profile = () => {
     return (
         <div>
             <Header title="My Profile"/>
+             {user && (
+                <p className="pulse-text text-center mt-4 text-lg font-medium">
+                    Welcome, {user.name}!
+                </p>
+            )}
             <UserProfile user={user} />
         </div>
     );

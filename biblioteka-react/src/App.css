@@ -93,3 +93,16 @@ footer span {
     margin-top: 30px;
     margin-bottom: 100px;
 }
+
+@keyframes pulseText {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0.6; transform: translateY(-5px); }
+}
+
+.pulse-text {
+  animation: pulseText 1.5s infinite ease-in-out;
+  color: #070064; 
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
